@@ -1,0 +1,65 @@
+def main():
+    print("welcome to my bank ATM machine")
+    user = input("please enter your username")
+    try:
+        user = str(user)
+    except:
+        user = int(user)
+        user = float(user)
+        print("Invalid input")
+        return main()
+def withdraw():
+    w_d = input("enter how much do you want to Withdraw")
+    try:
+        w_d = float(w_d)
+        w_d = int(w_d)
+        print("process successful")
+        return other_services()
+    except:
+        w_d = str(w_d)
+        print("invalid input")
+        return withdraw()
+def deposit():
+    dep = input("enter amount you wish to deposit")
+    try:
+        dep = int(dep)
+        dep = float(dep)
+        print("deposit successful")
+        return other_services()
+    except:
+        dep = str(dep)
+        print("Invalid input")
+        return deposit()
+
+def services():
+    print("A. Withdraw")
+    print("B. Deposit")
+    print("C. Exit")
+    choose = input("enter what type of services do you want to perform")
+    if choose == "A":
+        return withdraw
+    elif choose == "B":
+        return deposit
+    elif choose == "C":
+        print("thanks for using ATM machine")
+        return main()
+    else:
+        print("invalid input")
+        return services()
+def other_services():
+    print("A. YES")
+    print("B. NO")
+    other = input("Do you want to perform other services? ")
+    if other == "A":
+        return services()
+    elif other == "B":
+        print("thank you for using ATM machine")
+        return main()
+    else:
+        print("invalid input")
+        return other_services()
+main()
+services()
+withdraw()
+deposit()
+other_services()
