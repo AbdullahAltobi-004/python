@@ -1,0 +1,20 @@
+from random import randint
+def otp(length):
+    otp = ""
+    for i in range(length):
+        otp += str(randint(0,9))
+    return otp
+def attempt_otp(otp, attempt = 3):
+    while attempt > 3:
+        o = int(input("enter otp"))
+        if o == otp:
+            print("log in successful")
+        else:
+            attempt = attempt - 1
+            print("wrong otp, try again")
+            print("attempts left", attempt)
+    else:
+        print("access denied")
+n = int(input("enter length of otp"))
+otp = otp(length=n)
+print("random otp is:",otp)
